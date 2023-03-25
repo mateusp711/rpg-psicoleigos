@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RpdRoutingModule } from './rpd-routing.module';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    RpdRoutingModule
   ]
 })
 export class RpdModule { }
