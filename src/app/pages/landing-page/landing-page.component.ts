@@ -6,29 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.scss', './bubly-button.scss']
 })
 export class LandingPageComponent implements OnInit {
+  bubblyButtons = document.getElementsByClassName("bubbly-button");
+  
   constructor() { }
 
-  ngOnInit() { }
-
-  animateButton = (e: any) => {
-
-    e.preventDefault;
-    //reset animation
-    e.target.classList.remove('animate');
-
-    e.target.classList.add('animate');
-    setTimeout(function () {
-      e.target.classList.remove('animate');
-    }, 700);
-  };
-
-  bubblyButtons = document.getElementsByClassName("bubbly-button");
-
-
-  bubbles() {
+  ngOnInit() {
     for (var i = 0; i < this.bubblyButtons.length; i++) {
       this.bubblyButtons[i].addEventListener('click', this.animateButton, false);
     }
   }
+
+  animateButton = (e: any) => {
+    try {
+      e.preventDefault;
+      e.target.classList.remove('animate');
+    }
+    finally {
+      e.target.classList.add('animate');
+      setTimeout(function () {
+        e.target.classList.remove('animate');
+      }, 700);
+    }
+  };
 
 }
