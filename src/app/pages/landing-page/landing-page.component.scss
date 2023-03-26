@@ -65,7 +65,7 @@ section#boxes {
   flex-direction: row;
 
   margin-top: -3rem;
-  .collumn {
+  .column {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -100,13 +100,23 @@ section#boxes {
 }
 
 section#block {
-  margin-top: 4rem;
-  background-color: #f5b0cb;
-  height: 70vh;
+  margin: 7rem 12vw 5rem 12vw;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  img {
+    width: 35vw;
+  }
+  .inside-block {
+    width: 35vw;
+    h3 {
+      font-weight: 600;
+      font-size: 2.4rem;
+    }
+  }
 }
-
-
-
 
 //TODO create a new scss file to put media//
 @media (max-width: 768px) {
@@ -131,7 +141,7 @@ section#block {
 
   section#boxes {
     flex-direction: column;
-    .collumn {
+    .column {
       margin-bottom: 5rem;
       p {
         width: 90%;
