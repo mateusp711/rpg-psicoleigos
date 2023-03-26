@@ -173,4 +173,37 @@ footer {
       }
     }
   }
+
+  section#block {
+    flex-direction: column;
+    img {
+      width: 80vw;
+    }
+    .inside-block {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      p {
+        text-align: center;
+        min-width: 75vw;
+      }
+    }
+  }
+  section#reverse-block {
+    flex-direction: column;
+    img {
+      width: 80vw;
+    }
+    .inside-block {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      p {
+        text-align: center;
+        min-width: 75vw;
+      }
+    }
+  }
 }
