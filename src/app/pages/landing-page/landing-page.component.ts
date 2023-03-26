@@ -25,7 +25,7 @@ export class LandingPageComponent implements OnInit {
   bubblyButtons = document.getElementsByClassName("bubbly-button");
 
 
-  click() {
+  bubbles() {
     for (var i = 0; i < this.bubblyButtons.length; i++) {
       this.bubblyButtons[i].addEventListener('click', this.animateButton, false);
     }
