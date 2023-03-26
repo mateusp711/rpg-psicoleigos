@@ -118,6 +118,31 @@ section#block {
   }
 }
 
+section#reverse-block {
+  margin: 7rem 12vw 5rem 12vw;
+
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+  img {
+    width: 35vw;
+  }
+  .inside-block {
+    width: 35vw;
+    h3 {
+      font-weight: 600;
+      font-size: 2.4rem;
+    }
+  }
+}
+
+footer {
+  margin-top: 30vh;
+  height: 60vh;
+  background-color: #f5b0cb;
+}
+
 //TODO create a new scss file to put media//
 @media (max-width: 768px) {
   header {
