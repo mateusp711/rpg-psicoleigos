@@ -60,6 +60,37 @@ section#psicomoon-cover {
   }
 }
 
+section#boxes {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: -2rem;
+  .collumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #98e3f4;
+      border-radius: 50%;
+      width: 6rem;
+      height: 6rem;
+      img {
+        // TODO change image color to white //
+      }
+    }
+    button {
+      text-transform: uppercase;
+
+    }
+  }
+}
+
 @media (max-width: 768px) {
   header {
     .container#header-container {
