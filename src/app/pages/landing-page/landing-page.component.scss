@@ -147,15 +147,27 @@ footer {
   justify-content: flex-start;
   .links {
     width: 50vw;
-    margin: 2rem 0 0 -6vw;
+    margin: 2rem 0 0 1rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    * {
+      color: white;
+    }
 
     .column {
       display: flex;
       flex-direction: column;
+      margin: 0 4rem 0 0;
+      h4 {
+        font-weight: 700;
+      }
+      a {
+        font-weight: 500;
+        line-height: 2rem;
+        text-decoration: none;
+      }
     }
   }
 }
