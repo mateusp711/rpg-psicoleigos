@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div *ngIf="loaded; else routerOutlet" class="spinner">
+  <div class="cell">
+    <div class="pl pl-puzzle"></div>
+  </div>
+</div>
+
+<ng-template #routerOutlet>
+  <router-outlet></router-outlet>
+</ng-template>
