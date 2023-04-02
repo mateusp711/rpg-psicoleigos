@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
   bubblyButtons = document.getElementsByClassName("bubbly-button");
-  
-  constructor() { }
+
+  constructor(authService: AuthService) { }
 
   ngOnInit() {
     for (var i = 0; i < this.bubblyButtons.length; i++) {
