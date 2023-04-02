@@ -14,7 +14,11 @@ const routes: Routes = [
 
   { path: 'sign-up', loadChildren: () => import('./components/sign-up/sign-up.module').then(m => m.SignUpModule) },
 
+  { path: 'verify-email', loadChildren: () => import('./components/verify-email/verify-email.module').then(m => m.VerifyEmailModule) },
+
   { path: '', loadChildren: () => import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule) },
+
+
 ];
 
 @NgModule({
