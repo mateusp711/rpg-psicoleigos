@@ -1,36 +1,4 @@
-a {
-  cursor: pointer;
-}
 
-header {
-  background: #98e3f4;
-
-  .container#header-container {
-    margin: 0;
-    .header-logo {
-      width: 4rem;
-      height: 4rem;
-    }
-    .header {
-      width: 95vw;
-    }
-    .dropdown {
-      margin-right: -1.5rem;
-    }
-    .dropdown-menu {
-      .dropdown-item {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: flex-end;
-      }
-      img {
-        width: 17%;
-        margin: 0 0.5rem;
-      }
-    }
-  }
-}
 
 section#psicomoon-cover {
   margin-top: -1px;

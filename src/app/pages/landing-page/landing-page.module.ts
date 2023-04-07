@@ -4,6 +4,7 @@ import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { SignInModule } from 'src/app/components/sign-in/sign-in.module';
 import { SignInComponent } from 'src/app/components/sign-in/sign-in.component';
 import { LandingPageComponent } from './landing-page.component';
+import { NavBarModule } from './nav-bar/nav-bar.module';
 
 
 
@@ -12,7 +13,8 @@ import { LandingPageComponent } from './landing-page.component';
   imports: [
     CommonModule,
     LandingPageRoutingModule,
-    SignInModule
+    SignInModule,
+    NavBarModule
   ]
 })
 export class LandingPageModule { }

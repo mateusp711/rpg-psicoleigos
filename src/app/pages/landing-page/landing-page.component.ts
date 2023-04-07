@@ -31,16 +31,5 @@ export class LandingPageComponent implements OnInit {
     }
   };
 
-  navigateToRpd() {
-    if (this.authService.isLoggedIn) {
-      this.router.navigate(['rpd'])
-    }
-    else { this.router.navigate(['sign-in']) }
-  }
-
-  logOut() {
-    this.authService.SignOut()
-  }
-
 
 }
