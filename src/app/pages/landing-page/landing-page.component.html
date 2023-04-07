@@ -21,7 +21,7 @@
         <li>
           <a href="#" class="nav-link px-2 link-dark">Recursos terapêuticos</a>
         </li>
-        <li><a href="#" class="nav-link px-2 link-dark">RPD</a></li>
+        <li><a (click)="navigateToRpd()" class="nav-link px-2 link-dark">RPD</a></li>
         <li>
           <a href="#" class="nav-link px-2 link-dark">Registro das emoções</a>
         </li>
@@ -57,7 +57,7 @@
           <li><a class="dropdown-item" href="#">Profile</a></li>
           <li><hr class="dropdown-divider" /></li>
           <li>
-            <a class="dropdown-item" href="#">
+            <a (click)="logOut()" class="dropdown-item" href="#">
               <img src="../../../assets/logout-svg.svg" alt="logout svg" /> Sign
               out</a
             >

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LandingPageComponent implements OnInit {
   bubblyButtons = document.getElementsByClassName("bubbly-button");
 
-  constructor(authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     for (var i = 0; i < this.bubblyButtons.length; i++) {
@@ -29,5 +30,17 @@ export class LandingPageComponent implements OnInit {
       }, 700);
     }
   };
+
+  navigateToRpd() {
+    if (this.authService.isLoggedIn) {
+      this.router.navigate(['rpd'])
+    }
+    else { this.router.navigate(['sign-in']) }
+  }
+
+  logOut() {
+    this.authService.SignOut()
+  }
+
 
 }
