@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { AuthGuard2 } from './shared/guard/logged.guard';
 
 
 const routes: Routes = [
-  { path: 'landing-page', loadChildren: () => import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule) },
+  { path: 'landing-page', loadChildren: () => import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule), canActivate: [AuthGuard2] },
 
   { path: 'rpd', loadChildren: () => import('./pages/rpd/rpd.module').then(m => m.RpdModule), canActivate: [AuthGuard] },
 
@@ -16,7 +17,7 @@ const routes: Routes = [
 
   { path: 'verify-email', loadChildren: () => import('./components/verify-email/verify-email.module').then(m => m.VerifyEmailModule) },
 
-  { path: '', loadChildren: () => import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule) },
+  { path: '', loadChildren: () => import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule), canActivate: [AuthGuard2] },
 
 
 ];
