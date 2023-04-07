@@ -5,6 +5,7 @@ header {
     .header-logo {
       width: 4rem;
       height: 4rem;
+      margin: 0.25% 0;
     }
     .header {
       width: 95vw;
@@ -12,13 +13,12 @@ header {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-    }#f5b0c
-    img {
+    }
+    #f5b0c img {
       width: 17%;
       margin: 0 0.5rem;
     }
   }
-
 }
 
 //colors

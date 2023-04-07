@@ -146,14 +146,6 @@ footer {
 
 //TODO create a new scss file to put media//
 @media (max-width: 768px) {
-  header {
-    .container#header-container {
-      .header {
-        width: 90vw;
-      }
-    }
-  }
-
   section#psicomoon-cover {
     h1 {
       font-size: 3.5rem;
