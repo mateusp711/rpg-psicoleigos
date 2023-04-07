@@ -13,6 +13,7 @@ export class LandingPageComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+   console.log(this.authService.isLoggedIn)
     for (var i = 0; i < this.bubblyButtons.length; i++) {
       this.bubblyButtons[i].addEventListener('click', this.animateButton, false);
     }

@@ -78,7 +78,6 @@ p {
   // display: block;
   font-size: 16px;
   font-weight: 400;
-  line-height: 30px;
   max-width: 160px;
   position: relative;
   text-decoration: none;
@@ -110,12 +109,11 @@ p {
 }
 
 .btn-1 {
-  border-radius: 20%;
   background: darken($red, 1.5%);
   font-weight: 400;
 
   svg {
-    height: 103%;
+    height: 104%;
     left: 0;
     position: absolute;
     top: 0;
