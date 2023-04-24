@@ -1,1 +1,48 @@
 <app-nav-bar></app-nav-bar>
+
+<!-- <canvas baseChart
+        [datasets]="chartData.datasets"
+        [labels]="chartData.labels"
+        [legend]="chartLegend"
+        [options]="chartOptions"
+        [type]="'polarArea'">
+</canvas> -->
+
+<section class="sample-app-content">
+  <h1>Reactive Form Example:</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <label>Evento:</label>
+      <input type="text" formControlName="event" />
+    </p>
+
+    <p>
+      <label>Pensamento automático:</label>
+      <input type="text" formControlName="automatic_thought" />
+    </p>
+
+    <p>
+      <label>Emoção:</label>
+      <input type="text" formControlName="emotion" />
+    </p>
+
+    <p>
+      <label>Comportamento:</label>
+      <input type="text" formControlName="behavior" />
+    </p>
+
+    <p>
+      <label>Reestruturação:</label>
+      <input type="text" formControlName="restructuring" />
+    </p>
+
+    <p>
+      <label>data:</label>
+      <input type="date" formControlName="date" />
+    </p>
+
+    <p>
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+    </p>
+  </form>
+</section>
