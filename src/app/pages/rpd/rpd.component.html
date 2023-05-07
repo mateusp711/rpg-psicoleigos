@@ -11,38 +11,39 @@
 <section class="sample-app-content">
   <h1>Reactive Form Example:</h1>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <p>
+    <div>
       <label>Evento:</label>
-      <input type="text" formControlName="event" />
-    </p>
+      <textarea class="event" formControlName="event"></textarea>
+    </div>
 
-    <p>
+    <div>
       <label>Pensamento automático:</label>
       <input type="text" formControlName="automatic_thought" />
-    </p>
+    </div>
 
-    <p>
+    <div>
       <label>Emoção:</label>
       <input type="text" formControlName="emotion" />
-    </p>
+    </div>
 
-    <p>
+    <div>
       <label>Comportamento:</label>
-      <input type="text" formControlName="behavior" />
-    </p>
+      <textarea class="behavior" formControlName="behavior"></textarea>
+    </div>
 
-    <p>
+    <div>
       <label>Reestruturação:</label>
       <input type="text" formControlName="restructuring" />
-    </p>
+    </div>
 
-    <p>
+    <div>
       <label>data:</label>
       <input type="date" formControlName="date" />
-    </p>
+    </div>
 
-    <p>
-      <button type="submit" [disabled]="!form.valid">Submit</button>
-    </p>
+    <div class="buttons">
+      <button type="submit" [disabled]="!form.valid">Criar</button>
+      <button type="clear"  (click)="clearForm()">Limpar</button>
+    </div>
   </form>
 </section>

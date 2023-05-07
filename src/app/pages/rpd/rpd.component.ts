@@ -77,4 +77,9 @@ export class RpdComponent implements OnInit {
       console.log(data)
     })
   }
+
+  clearForm(){
+    this.form.reset()
+  }
+
 }
