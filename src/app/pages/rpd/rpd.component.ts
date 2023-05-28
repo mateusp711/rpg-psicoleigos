@@ -73,9 +73,9 @@ export class RpdComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.rpdService.getAllRpds('mateus_s29@live.com').subscribe(data => {
+   /*  this.rpdService.getAllRpds('mateus_s29@live.com').subscribe(data => {
       console.log(data)
-    })
+    }) */
   }
 
   clearForm(){

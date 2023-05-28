@@ -87,17 +87,16 @@ export class AuthService {
   }
   // Sign in with Google
   GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['rpd']);
-    });
+    return this.AuthLogin(new auth.GoogleAuthProvider());
   }
+
   // Auth logic to run auth providers
   AuthLogin(provider: any) {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['rpd']);
         this.SetUserData(result.user);
+        this.router.navigate(['rpd']);
       })
       .catch((error) => {
         window.alert(error);
@@ -127,5 +126,17 @@ export class AuthService {
       localStorage.removeItem('user');
       this.router.navigate(['landing-page']);
     });
+  }
+
+  getUser() {
+    const localStorageUser = localStorage.getItem('user');
+
+    let user: User;
+    if (localStorageUser && localStorageUser != 'null') {
+      user = JSON.parse(localStorageUser);
+    } else {
+      user = this.userData._delegate;
+    }
+    return user;
   }
 }

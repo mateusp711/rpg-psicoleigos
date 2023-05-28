@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 export interface CreateRpd {
   event: string,
@@ -20,20 +19,20 @@ export interface CreateRpd {
 export class RpdService {
 
   constructor(private http: HttpClient) { }
-  url: string = 'http://localhost:3000/api/rpd'
+  url: string = environment.baseUrl
 
   getAllRpds(createdBy: string | null) {
     if (createdBy) {
-      const response = this.http.get(`${this.url}?createdBy=${createdBy}`)
+      const response = this.http.get(`${this.url + 'rpd'}?createdBy=${createdBy}`)
       return response;
     } else {
-      const response = this.http.get(this.url);
+      const response = this.http.get(this.url + 'rpd');
       return response;
     }
   }
 
   postRpd(data: CreateRpd) {
-    const response = this.http.post(this.url, data)
+    const response = this.http.post(this.url + 'rpd', data)
     response.subscribe()
     return response
   }
