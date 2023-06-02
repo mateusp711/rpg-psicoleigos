@@ -13,7 +13,7 @@ import { User } from 'src/app/services/user.service';
   styleUrls: ['./rpd.component.scss']
 })
 export class RpdComponent implements OnInit {
-  /*   title = 'ng2-charts-demo';
+    title = 'ng2-charts-demo';
 
     public chartData: ChartConfiguration<'polarArea'>['data'] = {
       labels: [
@@ -41,45 +41,13 @@ export class RpdComponent implements OnInit {
       responsive: false,
     };
     public chartLegend = true;
-   */
 
-  constructor(private authService: AuthService, private rpdService: RpdService) {
+  constructor(private authService: AuthService, private rpdService: RpdService) {}
 
-  }
-  form = new FormGroup({
-    "event": new FormControl("", [Validators.required, Validators.maxLength(255)]),
-    "automatic_thought": new FormControl("", [Validators.required, Validators.maxLength(255)]),
-    "behavior": new FormControl(null, [Validators.required]),
-    "emotion": new FormControl("", [Validators.required]),
-    "restructuring": new FormControl("", [Validators.required]),
-    "date": new FormControl("", [Validators.required])
-  });
 
-  onSubmit() {
-    if (this.form.controls['behavior'].value && this.form.controls['event'].value && this.form.controls['automatic_thought'].value && this.form.controls['emotion'].value && this.form.controls['date'].value && this.form.controls['restructuring'].value) {
-      const data: CreateRpd = {
-        event: this.form.controls['event'].value,
-        automatic_thought: this.form.controls['automatic_thought'].value,
-        behavior: this.form.controls['behavior'].value,
-        emotion: this.form.controls['emotion'].value,
-        date: this.form.controls['date'].value,
-        restructuring: this.form.controls['restructuring'].value,
-        createdBy: this.authService.userData.email
-      }
-
-      console.log("reactive form submitted");
-      console.log(data);
-      this.rpdService.postRpd(data)
-    }
-  }
   ngOnInit() {
-   /*  this.rpdService.getAllRpds('mateus_s29@live.com').subscribe(data => {
-      console.log(data)
-    }) */
+    const user = this.authService.getUser()
+    this.rpdService.getAllRpds(user.email).subscribe(data => {
+    })
   }
-
-  clearForm(){
-    this.form.reset()
-  }
-
 }

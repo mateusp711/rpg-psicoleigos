@@ -1,0 +1,64 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-field"
+        placeholder="Evento"
+        formControlName="event"
+      />
+      <label class="form-label">Evento:</label>
+    </div>
+
+    <div class="form-group">
+      <input
+        class="form-field"
+        type="text"
+        placeholder="Pensamento automático"
+        formControlName="automatic_thought"
+      />
+      <label class="form-label">Pensamento automático:</label>
+    </div>
+
+    <div class="form-group">
+      <div class="emotion-buttons">
+        <button (click)="clickButton(item)" [ngClass]="status != item ? 'button btn' : 'button btn ' + item " type="button" class="button btn" *ngFor="let item of teste">{{ item }}</button>
+      </div>
+      <label class="form-label">Emoção:</label>
+    </div>
+
+    <div class="form-group">
+      <input
+        class="form-field"
+        placeholder="Comportamento"
+        formControlName="behavior"
+      />
+      <label class="form-label">Comportamento:</label>
+    </div>
+
+    <div class="form-group">
+      <input
+        placeholder="Reestruturação"
+        class="form-field"
+        type="text"
+        formControlName="restructuring"
+      />
+      <label class="form-label">Reestruturação:</label>
+    </div>
+
+    <div class="form-group">
+      <input
+        placeholder="data"
+        class="form-field date"
+        type="date"
+        formControlName="date"
+      />
+      <label class="form-label">data:</label>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Criar</button>
+      <button type="clear" class="btn btn-outline-danger" (click)="clearForm()">Limpar</button>
+    </div>
+  </form>
+</div>

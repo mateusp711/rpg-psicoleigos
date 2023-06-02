@@ -130,7 +130,6 @@ export class AuthService {
 
   getUser() {
     const localStorageUser = localStorage.getItem('user');
-
     let user: User;
     if (localStorageUser && localStorageUser != 'null') {
       user = JSON.parse(localStorageUser);

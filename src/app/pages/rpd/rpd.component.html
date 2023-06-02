@@ -1,49 +1,15 @@
 <app-nav-bar></app-nav-bar>
 
-<!-- <canvas baseChart
+<div class="content">
+<div class="canvas">
+<label for="canvas">controle emocional semanal</label>
+<canvas baseChart
         [datasets]="chartData.datasets"
         [labels]="chartData.labels"
         [legend]="chartLegend"
         [options]="chartOptions"
         [type]="'polarArea'">
-</canvas> -->
-
-<section class="sample-app-content">
-  <h1>Reactive Form Example:</h1>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
-      <label>Evento:</label>
-      <textarea class="event" formControlName="event"></textarea>
-    </div>
-
-    <div>
-      <label>Pensamento automático:</label>
-      <input type="text" formControlName="automatic_thought" />
-    </div>
-
-    <div>
-      <label>Emoção:</label>
-      <input type="text" formControlName="emotion" />
-    </div>
-
-    <div>
-      <label>Comportamento:</label>
-      <textarea class="behavior" formControlName="behavior"></textarea>
-    </div>
-
-    <div>
-      <label>Reestruturação:</label>
-      <input type="text" formControlName="restructuring" />
-    </div>
-
-    <div>
-      <label>data:</label>
-      <input type="date" formControlName="date" />
-    </div>
-
-    <div class="buttons">
-      <button type="submit" [disabled]="!form.valid">Criar</button>
-      <button type="clear"  (click)="clearForm()">Limpar</button>
-    </div>
-  </form>
-</section>
+</canvas>
+</div>
+<app-rpd-form> </app-rpd-form>
+</div>
