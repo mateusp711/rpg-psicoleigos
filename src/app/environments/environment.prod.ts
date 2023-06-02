@@ -1,5 +1,6 @@
 export const environment = {
-  production: false,
+  baseUrl: "https://psicoleigos.azurewebsites.net/",
+  production: true,
   firebase: {
     apiKey: "AIzaSyBZwKztkqkhS6b7UHmRBdOyeg1myLJEcR8",
     authDomain: "psicoleigos-eeee1.firebaseapp.com",
