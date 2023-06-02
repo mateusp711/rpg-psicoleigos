@@ -1,0 +1,130 @@
+$primary: #f5b0cb;
+$secondary: #98e3f4;
+$white: #fff;
+$gray: #600056;
+
+.container {
+  width: 50vw;
+
+  .form-group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 100%;
+
+    input.form-field.date {
+      font-size: 1rem;
+    }
+
+    .form-label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 1rem;
+      font-weight: 500;
+      color: $gray;
+    }
+
+    .form-field {
+      font-family: inherit;
+      width: 100%;
+      border: 0;
+      border-bottom: 2px solid $gray;
+      outline: 0;
+      font-size: 0.9rem;
+      color: #000;
+      padding-top: 12px;
+      background: transparent;
+      transition: border-color 0.2s;
+
+      &::placeholder {
+        visibility: hidden;
+      }
+
+      &:placeholder-shown ~ .form-label {
+        font-size: 1.1rem;
+        cursor: text;
+        top: 10px;
+      }
+    }
+
+    .form-field:focus {
+      ~ .form-label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 0.8rem;
+        color: $primary; // label focus color //
+        font-weight: 700;
+      }
+      padding-bottom: 6px;
+      font-weight: 400;
+      border-width: 3px;
+      border-image: linear-gradient(to right, $primary, $secondary);
+      border-image-slice: 1;
+    }
+
+    /* reset input */
+    .form-field {
+      &:required,
+      &:invalid {
+        box-shadow: none;
+      }
+    }
+
+    .emotion-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 1.5rem;
+      margin-bottom: -0.5rem;
+      width: 75%;
+    }
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 25%;
+    margin-left: 75%;
+    margin-top: 2rem;
+  }
+}
+
+// unique buttons //
+.button.raiva {
+  background-color: red;
+  color: white;
+  font-weight: 500;
+}
+
+.button.tristeza {
+  background-color: blue;
+  color: white;
+  font-weight: 500;
+}
+
+.button.nojo {
+  background-color: green;
+  color: white;
+  font-weight: 500;
+}
+
+.button.alegria {
+  background-color: rgb(255, 213, 0);
+  color: white;
+  font-weight: 500;
+}
+
+.button.vergonha {
+  background-color: purple;
+  color: white;
+  font-weight: 500;
+}
+
+.button {
+  color: $gray;
+}

@@ -1,1 +1,15 @@
 <app-nav-bar></app-nav-bar>
+
+<div class="content">
+<div class="canvas">
+<label for="canvas">controle emocional semanal</label>
+<canvas baseChart
+        [datasets]="chartData.datasets"
+        [labels]="chartData.labels"
+        [legend]="chartLegend"
+        [options]="chartOptions"
+        [type]="'polarArea'">
+</canvas>
+</div>
+<app-rpd-form> </app-rpd-form>
+</div>

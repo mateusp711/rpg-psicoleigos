@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -7,9 +7,14 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent {
-  teste: string = this.authService.userData.photoURL || ''
+export class NavBarComponent implements OnInit {
+  user = this.authService.getUser()
+  photoUrl: string = this.user.photoURL;
   constructor(private authService: AuthService, private router: Router) { }
+
+  ngOnInit(): void {
+    console.log('teste', this.user)
+  }
 
   navigateToRpd() {
     if (this.authService.isLoggedIn) {
@@ -21,5 +26,7 @@ export class NavBarComponent {
   logOut() {
     this.authService.SignOut()
   }
+
+
 
 }
