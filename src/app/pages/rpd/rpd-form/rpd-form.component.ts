@@ -14,11 +14,7 @@ export class RpdFormComponent implements OnInit {
 
   constructor(private authService: AuthService, private rpdService: RpdService){}
 
-  ngOnInit(){
-  }
-
-
-
+  ngOnInit(){}
 
     form = new FormGroup({
     "event": new FormControl("", [Validators.required, Validators.maxLength(255)]),
@@ -40,9 +36,8 @@ export class RpdFormComponent implements OnInit {
         restructuring: this.form.controls['restructuring'].value,
         createdBy: this.authService.userData.email
       }
-      console.log("reactive form submitted");
       console.log(data);
-    /*   this.rpdService.postRpd(data) */
+      this.rpdService.postRpd(data)
     }
   }
 

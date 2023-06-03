@@ -1,10 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ChartConfiguration, ChartOptions, Ticks, scales } from 'chart.js';
-import { Scale } from 'chart.js/dist';
+import { Component, OnInit } from '@angular/core';
+import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { AuthService } from 'src/app/services/auth.service';
-import { CreateRpd, RpdService } from 'src/app/services/rpd.service';
-import { User } from 'src/app/services/user.service';
+import { RpdService } from 'src/app/services/rpd.service';
 
 
 @Component({
@@ -48,6 +45,7 @@ export class RpdComponent implements OnInit {
   ngOnInit() {
     const user = this.authService.getUser()
     this.rpdService.getAllRpds(user.email).subscribe(data => {
+      console.log(data)
     })
   }
 }

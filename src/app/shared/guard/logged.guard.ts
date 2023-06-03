@@ -15,7 +15,6 @@ export class AuthGuard2 implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    console.log('teste')
     if (this.authService.isLoggedIn) {
       this.router.navigate(['rpd']);
     }
