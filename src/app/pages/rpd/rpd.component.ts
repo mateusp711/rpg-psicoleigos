@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartConfiguration, ChartOptions } from 'chart.js';
+import { ChartConfiguration, ChartOptions, Ticks } from 'chart.js';
 import { firstValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { RpdService } from 'src/app/services/rpd.service';
@@ -27,7 +27,29 @@ export class RpdComponent implements OnInit {
   data: number[] = [];
   public chartData: ChartConfiguration<'polarArea'>['data'] | undefined =
     undefined;
-  public chartOptions: ChartOptions<'polarArea'> = { responsive: true };
+  public chartOptions: ChartOptions<'polarArea'> = {
+    responsive: true,
+    scales: {
+      r: {
+
+        grid: {
+          z: 1,
+          color: 'rgba(0, 0, 0, 0.25)',
+        },
+        ticks: {
+          stepSize: 1,
+          textStrokeWidth: 4,
+          textStrokeColor: "#9BD0F5",
+          showLabelBackdrop: false,
+          z: 1,
+          color: 'rgba(0, 0, 0, 0.75)',
+          font: {
+            weight: 'bold',
+          }
+        }
+      }
+    }
+  };
   public chartLegend = true;
 
   constructor(
@@ -37,7 +59,7 @@ export class RpdComponent implements OnInit {
 
   async ngOnInit() {
     await this.getWeeklyRpds();
-    this.CanvasEntry()
+    this.CanvasEntry();
   }
 
   async getRpds(): Promise<Rpd[] | undefined> {
@@ -65,6 +87,7 @@ export class RpdComponent implements OnInit {
         week.includes(new Date(rpd.date).toISOString().slice(0, 10))
       );
     }
+    console.log(rpds);
     return (this.weeklyRpds = weeklyRpds);
   }
 
@@ -78,6 +101,11 @@ export class RpdComponent implements OnInit {
   CanvasEntry() {
     const canvasEntry = {
       labels: ['raiva', 'tristeza', 'vergonha', 'nojo', 'alegria'],
+      scales: {
+        ticks: {
+          z: 3,
+        },
+      },
       datasets: [
         {
           data: [
@@ -89,11 +117,25 @@ export class RpdComponent implements OnInit {
           ],
           label: 'Alegria',
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(75, 192, 192)',
-            'rgb(255, 205, 86)',
-            'rgb(201, 203, 207)',
-            'rgb(54, 162, 235)',
+            'rgb(220,20,60)',
+            'rgb(30,144,255)',
+            'rgb(153,50,204)',
+            'rgb(46,139,87)',
+            'rgb(255, 213, 0)'
+          ],
+          borderColor: [
+            'rgb(255,255,255)',
+            'rgb(255,255,255)',
+            'rgb(255,255,255)',
+            'rgb(255,255,255)',
+            'rgb(255,255,255)'
+          ],
+          hoverBorderColor: [
+            'rgb(220,20,60)',
+            'rgb(30,144,255)',
+            'rgb(153,50,204)',
+            'rgb(46,139,87)',
+            'rgb(255, 213, 0)'
           ],
         },
       ],
