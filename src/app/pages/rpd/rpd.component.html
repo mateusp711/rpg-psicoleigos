@@ -1,9 +1,10 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="content">
-  <div *ngIf="chartData" class="canvas">
-    <label for="canvas">controle emocional semanal</label>
+  <div class="canvas">
+    <label *ngIf="chartData" for="canvas">controle emocional semanal</label>
     <canvas
+      *ngIf="chartData"
       baseChart
       [datasets]="chartData.datasets"
       [labels]="chartData.labels"
@@ -12,6 +13,7 @@
       [type]="'polarArea'"
     >
     </canvas>
+    <app-spinner *ngIf="!chartData"></app-spinner>
   </div>
   <app-rpd-form> </app-rpd-form>
 </div>

@@ -6,6 +6,7 @@ import { NavBarModule } from 'src/app/components/nav-bar/nav-bar.module';
 import { NgChartsConfiguration, NgChartsModule } from 'ng2-charts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RpdFormComponent } from './rpd-form/rpd-form.component';
+import { SpinnerModule } from 'src/app/components/spinner/spinner.module';
 
 
 
@@ -17,7 +18,8 @@ import { RpdFormComponent } from './rpd-form/rpd-form.component';
     NavBarModule,
     NgChartsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SpinnerModule
   ],
   providers: [
     { provide: NgChartsConfiguration, useValue: { generateColors: true } }
