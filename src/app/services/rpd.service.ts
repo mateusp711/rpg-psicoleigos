@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { Rpd } from '../pages/rpd/rpd.component';
 
 export interface CreateRpd {
   event: string,
@@ -21,13 +22,11 @@ export class RpdService {
   constructor(private http: HttpClient) { }
   url: string = environment.baseUrl
 
-  getAllRpds(createdBy: string | null) {
-    if (createdBy) {
-      const response = this.http.get(`${this.url + 'rpd'}?createdBy=${createdBy}`)
-      return response;
+ getAllRpds(createdBy: string | null) {
+  if (createdBy) {
+     return this.http.get<Rpd[]>(`${this.url + 'rpd'}?createdBy=${createdBy}`);
     } else {
-      const response = this.http.get(this.url + 'rpd');
-      return response;
+     return this.http.get<Rpd[]>(this.url + 'rpd');
     }
   }
 
