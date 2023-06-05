@@ -12,7 +12,8 @@ export class NavBarComponent implements OnInit {
   photoUrl: string = this.user.photoURL;
   constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   navigateToRpd() {
     if (this.authService.isLoggedIn) {

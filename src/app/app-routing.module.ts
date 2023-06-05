@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './shared/guard/auth.guard';
+import { AuthGuard, } from './shared/guard/auth.guard';
 import { AuthGuard2 } from './shared/guard/logged.guard';
+import { redirectUnauthorizedTo, canActivate, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
+
+
+const redirectUnauthorizedToLandingPage = () => redirectUnauthorizedTo(['sign-in'])
+const redirectLoggedIntoRpd = () => redirectLoggedInTo(['rpd'])
 
 
 const routes: Routes = [
-  { path: 'landing-page', loadChildren: () => import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule), canActivate: [AuthGuard2] },
+  { path: 'landing-page', loadChildren: () => import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule), ...canActivate(redirectLoggedIntoRpd)},
 
-  { path: 'rpd', loadChildren: () => import('./pages/rpd/rpd.module').then(m => m.RpdModule), canActivate: [AuthGuard] },
+  { path: 'rpd', loadChildren: () => import('./pages/rpd/rpd.module').then(m => m.RpdModule), ...canActivate(redirectUnauthorizedToLandingPage) },
 
   { path: 'sign-in', loadChildren: () => import('./components/sign-in/sign-in.module').then(m => m.SignInModule) },
 
