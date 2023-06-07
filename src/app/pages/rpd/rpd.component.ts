@@ -22,7 +22,7 @@ export interface Rpd {
 })
 export class RpdComponent implements OnInit {
   title = 'ng2-charts-demo';
-  user: User = this.authService.getUser();
+  user?: User;
   weeklyRpds: Rpd[] = [];
   data: number[] = [];
   public chartData: ChartConfiguration<'polarArea'>['data'] | undefined =
@@ -59,11 +59,14 @@ export class RpdComponent implements OnInit {
 
   async ngOnInit() {
     await this.getWeeklyRpds();
+    this.user = await this.authService.getUser();
     this.CanvasEntry();
   }
 
   async getRpds(): Promise<Rpd[] | undefined> {
-    return await firstValueFrom(this.rpdService.getAllRpds(this.user.email));
+    if (this.user) {
+      return await firstValueFrom(this.rpdService.getAllRpds(this.user.email));
+    } else { return [] }
   }
 
   getWeek(fromDate: Date) {

@@ -34,8 +34,10 @@ export class AuthService {
   // Sign in with email/password
   async SignIn(email: string, password: string) {
     try {
-      const result = await this.afAuth
-        .signInWithEmailAndPassword(email, password);
+      const result = await this.afAuth.signInWithEmailAndPassword(
+        email,
+        password
+      );
       this.SetUserData(result.user);
       this.afAuth.authState.subscribe((user_1) => {
         if (user_1) {
@@ -49,8 +51,10 @@ export class AuthService {
   // Sign up with email/password
   async SignUp(email: string, password: string) {
     try {
-      const result = await this.afAuth
-        .createUserWithEmailAndPassword(email, password);
+      const result = await this.afAuth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
       /* Call the SendVerificaitonMail() function when new user sign
       up and returns promise */
       this.SendVerificationMail();
@@ -82,7 +86,11 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const userStored = JSON.parse(localStorage.getItem('user')!);
     const user = this.afAuth.currentUser;
-    return (userStored !== null && userStored.emailVerified !== false ? true : false) && (user != null)
+    return (
+      (userStored !== null && userStored.emailVerified !== false
+        ? true
+        : false) && user != null
+    );
   }
   // Sign in with Google
   async GoogleAuth() {
@@ -92,8 +100,7 @@ export class AuthService {
   // Auth logic to run auth providers
   async AuthLogin(provider: any) {
     try {
-      const result = await this.afAuth
-        .signInWithPopup(provider);
+      const result = await this.afAuth.signInWithPopup(provider);
       this.SetUserData(result.user);
     } catch (error) {
       window.alert(error);
@@ -126,14 +133,14 @@ export class AuthService {
     });
   }
 
-  getUser() {
+  async getUser(): Promise<User> {
     const localStorageUser = localStorage.getItem('user');
     let user: User;
     if (localStorageUser && localStorageUser != 'null') {
-      user = JSON.parse(localStorageUser);
+      return (user = JSON.parse(localStorageUser));
     } else {
-      user = this.userData._delegate;
+      user = (await this.afAuth.currentUser) || this.userData;
+      return user;
     }
-    return user;
   }
 }

@@ -8,11 +8,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  user = this.authService.getUser()
-  photoUrl: string = this.user.photoURL;
+  user: any;
+  photoUrl?: string;
   constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.user = await this.authService.getUser()
+    this.photoUrl = this.user.photoURL;
   }
 
   navigateToRpd() {
