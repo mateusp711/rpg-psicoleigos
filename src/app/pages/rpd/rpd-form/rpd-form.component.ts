@@ -6,7 +6,7 @@ import { CreateRpd, RpdService } from 'src/app/services/rpd.service';
 @Component({
   selector: 'app-rpd-form',
   templateUrl: './rpd-form.component.html',
-  styleUrls: ['./rpd-form.component.scss']
+  styleUrls: ['./rpd-form.component.scss', './rpd-form-component.responsive.scss']
 })
 export class RpdFormComponent implements OnInit {
   status?: string;

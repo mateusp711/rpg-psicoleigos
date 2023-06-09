@@ -18,7 +18,7 @@ export interface Rpd {
 @Component({
   selector: 'app-rpd',
   templateUrl: './rpd.component.html',
-  styleUrls: ['./rpd.component.scss'],
+  styleUrls: ['./rpd.component.scss', './rpd-component.responsive.scss'],
 })
 export class RpdComponent implements OnInit {
   title = 'ng2-charts-demo';
@@ -58,8 +58,8 @@ export class RpdComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    await this.getWeeklyRpds();
     this.user = await this.authService.getUser();
+    await this.getWeeklyRpds();
     this.CanvasEntry();
   }
 
