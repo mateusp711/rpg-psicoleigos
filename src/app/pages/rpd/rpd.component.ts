@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartOptions, Ticks } from 'chart.js';
 import { firstValueFrom } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { RpdService } from 'src/app/services/rpd.service';
+import { CreateRpd, RpdService } from 'src/app/services/rpd.service';
 import { User } from 'src/app/services/user.service';
+import { RpdFormComponent } from './rpd-form/rpd-form.component';
 
 export interface Rpd {
   event: string;
@@ -25,13 +26,13 @@ export class RpdComponent implements OnInit {
   user?: User;
   weeklyRpds: Rpd[] = [];
   data: number[] = [];
+  @ViewChild('appRpdForm') private appRpdForm: any;
   public chartData: ChartConfiguration<'polarArea'>['data'] | undefined =
     undefined;
   public chartOptions: ChartOptions<'polarArea'> = {
     responsive: true,
     scales: {
       r: {
-
         grid: {
           z: 1,
           color: 'rgba(0, 0, 0, 0.25)',
@@ -39,16 +40,16 @@ export class RpdComponent implements OnInit {
         ticks: {
           stepSize: 1,
           textStrokeWidth: 4,
-          textStrokeColor: "#9BD0F5",
+          textStrokeColor: '#9BD0F5',
           showLabelBackdrop: false,
           z: 1,
           color: 'rgba(0, 0, 0, 0.75)',
           font: {
             weight: 'bold',
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
   public chartLegend = true;
 
@@ -66,7 +67,9 @@ export class RpdComponent implements OnInit {
   async getRpds(): Promise<Rpd[] | undefined> {
     if (this.user) {
       return await firstValueFrom(this.rpdService.getAllRpds(this.user.email));
-    } else { return [] }
+    } else {
+      return [];
+    }
   }
 
   getWeek(fromDate: Date) {
@@ -103,7 +106,7 @@ export class RpdComponent implements OnInit {
 
   CanvasEntry() {
     const canvasEntry = {
-      labels: ['raiva', 'tristeza', 'vergonha', 'nojo', 'alegria'],
+      labels: ['raiva', 'tristeza', 'vergonha', 'nojo', 'alegria', 'ansiedade'],
       scales: {
         ticks: {
           z: 3,
@@ -117,32 +120,46 @@ export class RpdComponent implements OnInit {
             this.getNumberOfEmotions('vergonha').length,
             this.getNumberOfEmotions('nojo').length,
             this.getNumberOfEmotions('alegria').length,
+            this.getNumberOfEmotions('ansiedade').length,
           ],
-          label: 'Alegria',
           backgroundColor: [
             'rgb(220,20,60)',
             'rgb(30,144,255)',
             'rgb(153,50,204)',
             'rgb(46,139,87)',
-            'rgb(255, 213, 0)'
+            'rgb(255, 213, 0)',
+            'rgb(210, 0, 0)',
           ],
           borderColor: [
             'rgb(255,255,255)',
             'rgb(255,255,255)',
             'rgb(255,255,255)',
             'rgb(255,255,255)',
-            'rgb(255,255,255)'
+            'rgb(255,255,255)',
+            'rgb(255,255,255)',
           ],
           hoverBorderColor: [
             'rgb(220,20,60)',
             'rgb(30,144,255)',
             'rgb(153,50,204)',
             'rgb(46,139,87)',
-            'rgb(255, 213, 0)'
+            'rgb(255, 213, 0)',
+            'rgb(160, 8, 8)',
           ],
         },
       ],
     };
     this.chartData = canvasEntry;
+  }
+
+  async onSubmit(data: CreateRpd) {
+    try {
+      await firstValueFrom(this.rpdService.postRpd(data));
+      await this.getWeeklyRpds();
+      this.CanvasEntry();
+      this.appRpdForm.clearForm();
+    } catch (e) {
+      console.log(e, 'não foi possível criar rpd');
+    }
   }
 }

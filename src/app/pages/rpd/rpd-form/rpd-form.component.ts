@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { CreateRpd, RpdService } from 'src/app/services/rpd.service';
@@ -10,9 +10,10 @@ import { CreateRpd, RpdService } from 'src/app/services/rpd.service';
 })
 export class RpdFormComponent implements OnInit {
   status?: string;
-  teste = ['raiva', 'tristeza', 'alegria', 'vergonha', 'nojo']
+  emotions = ['raiva', 'tristeza', 'alegria', 'vergonha', 'nojo', 'ansiedade'];
+  @Output() postRpdEvent: EventEmitter<CreateRpd> = new EventEmitter();
 
-  constructor(private authService: AuthService, private rpdService: RpdService){}
+  constructor(private authService: AuthService){}
 
   ngOnInit(){}
 
@@ -36,13 +37,14 @@ export class RpdFormComponent implements OnInit {
         restructuring: this.form.controls['restructuring'].value,
         createdBy: this.authService.userData.email
       }
-      console.log(data);
-      this.rpdService.postRpd(data)
+      this.postRpdEvent?.emit(data);
     }
   }
 
-    clearForm(){
+  clearForm(){
     this.form.reset()
+    this.form.controls['date'].setValue((new Date()).toISOString().substring(0,10))
+    this.clickButton('')
   }
 
   clickButton(item: string){

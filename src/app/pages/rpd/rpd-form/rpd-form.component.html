@@ -22,7 +22,7 @@
 
     <div class="form-group">
       <div class="emotion-buttons">
-        <button (click)="clickButton(item)" [ngClass]="status != item ? 'button btn' : 'button btn ' + item " type="button" class="button btn" *ngFor="let item of teste">{{ item }}</button>
+        <button (click)="clickButton(item)" [ngClass]="status != item ? 'button btn' : 'button btn ' + item " type="button" class="button btn" *ngFor="let item of emotions">{{ item }}</button>
       </div>
       <label class="form-label">Emoção:</label>
     </div>

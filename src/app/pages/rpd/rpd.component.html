@@ -15,5 +15,5 @@
     </canvas>
     <app-spinner *ngIf="!chartData"></app-spinner>
   </div>
-  <app-rpd-form> </app-rpd-form>
+  <app-rpd-form #appRpdForm (postRpdEvent)="onSubmit($event)"> </app-rpd-form>
 </div>
